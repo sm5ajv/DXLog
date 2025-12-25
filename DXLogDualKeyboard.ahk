@@ -31,7 +31,7 @@ keyboardId2 := AHI.GetKeyboardId(0x25A7, 0xFA23, 1) ; DELL 2
 ;keyboardId2 := AHI.GetKeyboardId(0x0040, 0x073D, 1)
 AHI.SubscribeKeyboard(keyboardId1, true, Func("KeyEvent1"), true)
 AHI.SubscribeKeyboard(keyboardId2, true, Func("KeyEvent2"), true)
-SplashTextOn,300,50,DXLogDualKeyboard.ahk, DXLog Dual Keyboard Script activated.`nExit with Scroll Lock key!
+SplashTextOn,300,50,DXLogDualKeyboard.ahk, DXLog Dual Keyboard Script activated. nExit with Scroll Lock key!
 Sleep, 4000
 SplashTextOff
 return
@@ -43,24 +43,24 @@ KeyEvent1(code, state){
         if (code == 70) {
             quitMessage()
         }
-	if (code==42) {
-	    modifier := 42
-	}
-	if (code==29) {
-	    modifier := 29
-	}
-	if (code==56) {
-	    modifier := 56
-	}
-	if (code==285) {
-	    modifier := 285
-	}
-	if (code==312) {
-	    modifier := 312
-	}
-	if (code==347) {
-	    modifier := 347
-	}
+        if (code==42) {
+            modifier := 42
+        }
+        if (code==29) {
+            modifier := 29
+        }
+        if (code==56) {
+            modifier := 56
+        }
+        if (code==285) {
+            modifier := 285
+        }
+        if (code==312) {
+            modifier := 312
+        }
+        if (code==347) {
+            modifier := 347
+        }
 	
        ;ToolTip % "Keyboard Key - Code: " code ", State: " state " Modifier: " modifier
         if (keyboard != 1) {
@@ -74,28 +74,28 @@ KeyEvent1(code, state){
 KeyEvent2(code, state){
     setModifier(code, state)
     if (state == 1) {
-        if (code == 70) {
-            quitMessage()
+            if (code == 70) {
+                quitMessage()
+            }
+        if (code==42) {
+            modifier := 42
         }
-	if (code==42) {
-	    modifier := 42
-	}
-	if (code==29) {
-	    modifier := 29
-	}
-	if (code==56) {
-	    modifier := 56
-	}
-	if (code==285) {
-	    modifier := 285
-	}
-	if (code==312) {
-	    modifier := 312
-	}
-        if (code==347) {
-	    modifier := 347
-	}
-	
+        if (code==29) {
+            modifier := 29
+        }
+        if (code==56) {
+            modifier := 56
+        }
+        if (code==285) {
+            modifier := 285
+        }
+        if (code==312) {
+            modifier := 312
+        }
+            if (code==347) {
+            modifier := 347
+        }
+        
         ;ToolTip % "Keyboard Key - Code: " code ", State: " state " Modifier: " modifier
         if (keyboard != 2) {
             Send {Down}
@@ -144,13 +144,9 @@ quitMessage()
     IfMsgBox Yes
     {   
         ExitApp
-        ;AHI.UnsubscribeKeyboard(keyboardId1)
-	;AHI.UnsubscribeKeyboard(keyboardId2)
     }
     else
-    {   ; FIX ME The re-subscription does not work
-        ;AHI.SubscribeKeyboard(keyboardId1, true, Func("KeyEvent1"), true)
-        ;AHI.SubscribeKeyboard(keyboardId2, true, Func("KeyEvent2"), true)
+    {   
         MsgBox OK the script will continue.
     }
 	
@@ -158,12 +154,10 @@ quitMessage()
 
 setModifier(code, state)
 {
-    ; if (code == 42 || code == 29 || code == 56 || code ==285 || code == 312 ||code == 347) {
-	if (code == 42 || code == 29 || code == 56 || code ==285 || code == 312) {
-      if (state == 1)
-	    modifier := code
-      else
-	    modifier := -1
-	    
+    if (code == 42 || code == 29 || code == 56 || code ==285 || code == 312) {
+        if (state == 1)
+            modifier := code
+        else
+            modifier := -1
     }
 }
