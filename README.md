@@ -1,5 +1,4 @@
-# DXLog
-
+# DualKeyboard
 This utility is for SO2R (Single Op Two Radios) and dual keyboards when running DXLOG on a remote desktop. 
    
     
